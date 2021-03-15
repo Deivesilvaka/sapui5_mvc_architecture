@@ -1,0 +1,58 @@
+<head>
+    <meta charset="utf-8" />
+    <title>Quickstart</title>
+    <script
+      id="sap-ui-bootstrap"
+      src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+      data-sap-ui-theme="sap_belize"
+      data-sap-ui-libs="sap.m, sap.ui.layout, sap.tnt"
+      data-sap-ui-async="true"
+    ></script>
+  </head>
+
+  <script>
+
+    //Não importa o tipo de aplicação. Se tem js no meio, isto precisa estar também.
+    //Isso acaba nos impedindo de cometer vários erros no código.
+    'use strict'
+
+    //Muitas vezes você vai encontrar sem esta primeira linha. Mas ela é muito importante
+    //tanto para iniciar o projeto, quanto para ter acesso as bibliotecas.
+    sap.ui.getCore().attachInit(() => {
+
+      const { App } = sap.m
+
+      //define o"diretório raiz" da view.
+      sap.ui.localResources("src")
+
+      // Cria uma aplicação e identifica a pagina inicial como o id selecionado.
+      const application = new App('application', {
+          initialPage: 'idview'
+      })
+
+      //Cria uma view no estilo mvc
+
+      /*
+        Dependendo da forma que você escrever o código, esta função não vai EXISTIR.
+        Isso acontece se você esquecer de definir a função "localResources".
+      */
+      const view = sap.ui.view({
+        id:'idview',
+        type:sap.ui.core.mvc.ViewType.JS,
+        viewName:'src.index'
+      })
+
+      //Xuxu beleza, página criada. Agora é só adicionar no app e lancar o conteúdo dentro do 'content'
+      application.addPage(view)
+      application.placeAt('content')
+    })
+
+    
+
+  </script>
+
+  <!-- Esta classe abaixo define o tipo de layout e css que a página vai receber -->
+  <body class="sapUiBody" id="content"></body>
+  <!-- I id 'content' não obrigatório ser este, mas é meio que um padrão utilizado -->
+  <!-- Também não é obrigatório ser no body, você pode por em uma div também por exemplo -->
+</html>
